@@ -60,6 +60,9 @@ HashMap *makeHashMap() {
 	HashMap *m = calloc(sizeof(HashMap), 1);
 	if (m != NULL) {
 		(*m).entries = calloc(sizeof(Entry*), kHashMapBucketSize);
+		if (*m.entries != NULL) {
+			return m;
+		}
 	}
 	// Idiomatic (for make) death on allocation error
 	printf("Allocating HashMap failed, exiting...\n");
