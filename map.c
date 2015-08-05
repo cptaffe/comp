@@ -1,5 +1,6 @@
 
 // Interface for what defines a map.
+// TODO: Remove, Exists methods?
 typedef struct {
 	void (*Store)(void *self, const char *key, void *value);
 	void *(*Retrieve)(void *self, const char *key);
@@ -52,6 +53,8 @@ enum {
 	kHashMapBucketSize = 0x1000
 };
 
+// Very not robust hash map.
+// Does not allow multiple keys with the same hash.
 typedef struct {
 	Entry **entries;
 } HashMap;
@@ -73,8 +76,7 @@ HashMap *makeHashMap() {
 static int stringHash(const char *key) {
 	int hash = 0;
 	for (int i = 0; key[i]; i++) {
-		// Integer overflow simulates % p.
-		hash = ((hash * 31) + key[i]);
+		hash = hash * 31 + key[i];
 	}
 	return hash;
 }
