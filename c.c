@@ -10,7 +10,7 @@ int main() {
 #include <stdio.h>
 #include <string.h>
 #include "vector.c"
-#include "table.c"
+#include "map.c"
 #include "tok.c"
 #include <stdarg.h>
 #include "lex.c"
