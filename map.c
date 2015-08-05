@@ -60,7 +60,7 @@ HashMap *makeHashMap() {
 	HashMap *m = calloc(sizeof(HashMap), 1);
 	if (m != NULL) {
 		(*m).entries = calloc(sizeof(Entry*), kHashMapBucketSize);
-		if (*m.entries != NULL) {
+		if ((*m).entries != NULL) {
 			return m;
 		}
 	}
